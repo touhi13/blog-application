@@ -1,7 +1,10 @@
 import React from 'react'
+import Tags from '../ui/Tags';
+import Like from './Like';
+import Save from './Save';
 
 export default function DetailPost({ blog }) {
-    const { title, description, image, tags, likes, isSaved } = blog;
+    const { id, title, description, image, tags, likes, isSaved } = blog;
 
     return (
         <main className="post">
@@ -11,17 +14,12 @@ export default function DetailPost({ blog }) {
                     {title}
                 </h1>
                 <div className="tags" id="lws-singleTags">
-                    <span>#{tags.join(', #')}</span>
+                <Tags tags={tags} />
+
                 </div>
                 <div className="btn-group">
-                    <button className="like-btn" id="lws-singleLinks">
-                        <i className="fa-regular fa-thumbs-up"></i> {likes}
-                    </button>
-                    {isSaved ? <button className="active save-btn" id="lws-singleSavedBtn">
-                        <i className="fa-regular fa-bookmark"></i> Saved
-                    </button> : <button className="save-btn" id="lws-singleSavedBtn">
-                        <i className="fa-regular fa-bookmark"></i> Save
-                    </button>}
+                    <Like likes={likes} id={id} />
+                    <Save isSaved={isSaved} id={id} />
                 </div>
                 <div className="mt-6">
                     <p>

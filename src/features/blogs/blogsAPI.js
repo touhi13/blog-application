@@ -15,7 +15,6 @@ export const getBlogs = async (sort, filter) => {
     if (filter === "saved") {
         queryString += `&isSaved_like=${true}`;
     }
-    console.log(queryString);
     const response = await axios.get(`/blogs?${queryString}`);
 
     return response.data;

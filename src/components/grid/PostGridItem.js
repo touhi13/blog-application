@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Tags from '../ui/Tags';
 
 export default function PostGridItem({ blog }) {
     const { id, image, title, createdAt, likes, tags, isSaved } = blog;
@@ -15,7 +16,10 @@ export default function PostGridItem({ blog }) {
                     <p className="lws-likeCount"><i className="fa-regular fa-thumbs-up"></i>{likes}</p>
                 </div>
                 <Link to={`/posts/${id}`} className="lws-postTitle"> {title}</Link>
-                <div className="lws-tags"> #{tags.join(', #')}</div>
+
+                <div className="lws-tags">
+                    <Tags tags={tags} />
+                </div>
                 <div className="flex gap-2 mt-4">
                     {isSaved ? <div className="flex gap-2 mt-4">
                         <span className="lws-badge"> Saved </span>

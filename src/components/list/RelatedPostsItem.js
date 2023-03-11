@@ -1,19 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import Tags from '../ui/Tags';
 
-export default function RelatedPostsItem() {
+export default function RelatedPostsItem({ blog }) {
+    const { id, image, title, tags, createdAt } = blog;
     return (
         <div className="card">
-            <a href="post.html">
-                <img src="./images/git.webp" className="card-image" alt="" />
-            </a>
+            <Link to={`/blogs/${id}`}>
+                <img src={image} className="card-image" alt={title} />
+            </Link>
             <div className="p-4">
-                <a href="post.html" className="text-lg post-title lws-RelatedPostTitle">
-                    Top Github Alternatives
-                </a>
+                <Link to={`/blogs/${id}`} className="text-lg post-title lws-RelatedPostTitle">
+                    {title}
+                </Link>
+
                 <div className="mb-0 tags">
-                    <span>#python,</span> <span>#tech,</span> <span>#git</span>
+                    <Tags tags={tags} />
+
                 </div>
-                <p>2010-03-27</p>
+                <p>{createdAt}</p>
             </div>
         </div>
     )
