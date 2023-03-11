@@ -10,9 +10,11 @@ export default function PostGrid() {
   const dispatch = useDispatch();
   const { blogs, isLoading, isError, error } = useSelector(state => state.blogs)
 
+  const { sort, filter } = useSelector((state) => state.sortFilter);
+
   useEffect(() => {
-    dispatch(fetchBlogsAsync())
-  }, [dispatch]);
+    dispatch(fetchBlogsAsync({sort, filter}))
+  }, [dispatch, sort, filter]);
 
   let content;
   if (isLoading) content = <Loading />;
