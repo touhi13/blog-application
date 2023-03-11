@@ -1,7 +1,8 @@
 import PostGridItem from "./PostGridItem";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogsAsync } from "../features/blogs/blogsSlice";
+import { fetchBlogsAsync } from "../../features/blogs/blogsSlice";
+
 import Loading from "../ui/Loading";
 
 

@@ -1,20 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function PostGridItem() {
+export default function PostGridItem({ blog }) {
+    const { id, image, title, createdAt, likes, tags, isSaved } = blog;
+
     return (
         <div className="lws-card">
-            <a href="post.html">
-                <img src="./images/git.webp" className="lws-card-image" alt="" />
-            </a>
+            <Link to={`/posts/${id}`}>
+                <img src={image} className="lws-card-image" alt={title} />
+            </Link>
             <div className="p-4">
                 <div className="lws-card-header">
-                    <p className="lws-publishedDate">2023-05-01</p>
-                    <p className="lws-likeCount"><i className="fa-regular fa-thumbs-up"></i>100</p>
+                    <p className="lws-publishedDate">{createdAt}</p>
+                    <p className="lws-likeCount"><i className="fa-regular fa-thumbs-up"></i>{likes}</p>
                 </div>
-                <a href="post.html" className="lws-postTitle"> Top Github Alternatives </a>
-                <div className="lws-tags"><span>#python,</span> <span>#tech,</span> <span>#git</span></div>
+                <Link to={`/posts/${id}`} className="lws-postTitle"> {title}</Link>
+                <div className="lws-tags"> #{tags.join(', #')}</div>
                 <div className="flex gap-2 mt-4">
-                    <span className="lws-badge"> Saved </span>
+                    {isSaved ? <div className="flex gap-2 mt-4">
+                        <span className="lws-badge"> Saved </span>
+                    </div> : null}
                 </div>
             </div>
         </div>
