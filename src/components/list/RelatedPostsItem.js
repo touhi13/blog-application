@@ -6,11 +6,11 @@ export default function RelatedPostsItem({ blog }) {
     const { id, image, title, tags, createdAt } = blog;
     return (
         <div className="card">
-            <Link to={`/blogs/${id}`}>
+            <Link to={`/posts/${id}`}>
                 <img src={image} className="card-image" alt={title} />
             </Link>
             <div className="p-4">
-                <Link to={`/blogs/${id}`} className="text-lg post-title lws-RelatedPostTitle">
+                <Link to={`/posts/${id}`} className="text-lg post-title lws-RelatedPostTitle">
                     {title}
                 </Link>
 
